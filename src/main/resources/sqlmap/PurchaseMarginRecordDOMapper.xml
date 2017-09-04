@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jyd.dao.PurchaseMarginRecordDOMapper">
+  <resultMap id="BaseResultMap" type="com.jyd.dataobject.PurchaseMarginRecordDO">
+    <id column="MARGIN_NO" jdbcType="VARCHAR" property="marginNo" />
+    <result column="EN_ID" jdbcType="VARCHAR" property="enId" />
+    <result column="ORDER_NO" jdbcType="VARCHAR" property="orderNo" />
+    <result column="BATCH_ID" jdbcType="VARCHAR" property="batchId" />
+    <result column="USER_ID" jdbcType="VARCHAR" property="userId" />
+    <result column="REQUIRE_MANUAL_APPLY_MARGIN" jdbcType="DECIMAL" property="requireManualApplyMargin" />
+    <result column="REAL_APPLY_MARGIN" jdbcType="DECIMAL" property="realApplyMargin" />
+    <result column="REAL_APPLY_DATE" jdbcType="TIMESTAMP" property="realApplyDate" />
+    <result column="DEAL_STATUS" jdbcType="DECIMAL" property="dealStatus" />
+    <result column="SOURCE" jdbcType="DECIMAL" property="source" />
+    <result column="MARGIN_NOTE_HTML_PATH" jdbcType="VARCHAR" property="marginNoteHtmlPath" />
+    <result column="MARGIN_NOTE_PDF_PATH" jdbcType="VARCHAR" property="marginNotePdfPath" />
+    <result column="START_TIME" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="END_TIME" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    MARGIN_NO, EN_ID, ORDER_NO, BATCH_ID, USER_ID, REQUIRE_MANUAL_APPLY_MARGIN, REAL_APPLY_MARGIN, 
+    REAL_APPLY_DATE, DEAL_STATUS, SOURCE, MARGIN_NOTE_HTML_PATH, MARGIN_NOTE_PDF_PATH, 
+    START_TIME, END_TIME, REMARK
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from PX_PURCHASE_MARGIN_RECORD
+    where MARGIN_NO = #{marginNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from PX_PURCHASE_MARGIN_RECORD
+    where MARGIN_NO = #{marginNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.jyd.dataobject.PurchaseMarginRecordDO">
+    insert into PX_PURCHASE_MARGIN_RECORD (MARGIN_NO, EN_ID, ORDER_NO, 
+      BATCH_ID, USER_ID, REQUIRE_MANUAL_APPLY_MARGIN, 
+      REAL_APPLY_MARGIN, REAL_APPLY_DATE, DEAL_STATUS, 
+      SOURCE, MARGIN_NOTE_HTML_PATH, MARGIN_NOTE_PDF_PATH, 
+      START_TIME, END_TIME, REMARK
+      )
+    values (#{marginNo,jdbcType=VARCHAR}, #{enId,jdbcType=VARCHAR}, #{orderNo,jdbcType=VARCHAR}, 
+      #{batchId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{requireManualApplyMargin,jdbcType=DECIMAL}, 
+      #{realApplyMargin,jdbcType=DECIMAL}, #{realApplyDate,jdbcType=TIMESTAMP}, #{dealStatus,jdbcType=DECIMAL}, 
+      #{source,jdbcType=DECIMAL}, #{marginNoteHtmlPath,jdbcType=VARCHAR}, #{marginNotePdfPath,jdbcType=VARCHAR}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jyd.dataobject.PurchaseMarginRecordDO">
+    insert into PX_PURCHASE_MARGIN_RECORD
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="marginNo != null">
+        MARGIN_NO,
+      </if>
+      <if test="enId != null">
+        EN_ID,
+      </if>
+      <if test="orderNo != null">
+        ORDER_NO,
+      </if>
+      <if test="batchId != null">
+        BATCH_ID,
+      </if>
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="requireManualApplyMargin != null">
+        REQUIRE_MANUAL_APPLY_MARGIN,
+      </if>
+      <if test="realApplyMargin != null">
+        REAL_APPLY_MARGIN,
+      </if>
+      <if test="realApplyDate != null">
+        REAL_APPLY_DATE,
+      </if>
+      <if test="dealStatus != null">
+        DEAL_STATUS,
+      </if>
+      <if test="source != null">
+        SOURCE,
+      </if>
+      <if test="marginNoteHtmlPath != null">
+        MARGIN_NOTE_HTML_PATH,
+      </if>
+      <if test="marginNotePdfPath != null">
+        MARGIN_NOTE_PDF_PATH,
+      </if>
+      <if test="startTime != null">
+        START_TIME,
+      </if>
+      <if test="endTime != null">
+        END_TIME,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="marginNo != null">
+        #{marginNo,jdbcType=VARCHAR},
+      </if>
+      <if test="enId != null">
+        #{enId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="batchId != null">
+        #{batchId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="requireManualApplyMargin != null">
+        #{requireManualApplyMargin,jdbcType=DECIMAL},
+      </if>
+      <if test="realApplyMargin != null">
+        #{realApplyMargin,jdbcType=DECIMAL},
+      </if>
+      <if test="realApplyDate != null">
+        #{realApplyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dealStatus != null">
+        #{dealStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=DECIMAL},
+      </if>
+      <if test="marginNoteHtmlPath != null">
+        #{marginNoteHtmlPath,jdbcType=VARCHAR},
+      </if>
+      <if test="marginNotePdfPath != null">
+        #{marginNotePdfPath,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jyd.dataobject.PurchaseMarginRecordDO">
+    update PX_PURCHASE_MARGIN_RECORD
+    <set>
+      <if test="enId != null">
+        EN_ID = #{enId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        ORDER_NO = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="batchId != null">
+        BATCH_ID = #{batchId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        USER_ID = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="requireManualApplyMargin != null">
+        REQUIRE_MANUAL_APPLY_MARGIN = #{requireManualApplyMargin,jdbcType=DECIMAL},
+      </if>
+      <if test="realApplyMargin != null">
+        REAL_APPLY_MARGIN = #{realApplyMargin,jdbcType=DECIMAL},
+      </if>
+      <if test="realApplyDate != null">
+        REAL_APPLY_DATE = #{realApplyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dealStatus != null">
+        DEAL_STATUS = #{dealStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="source != null">
+        SOURCE = #{source,jdbcType=DECIMAL},
+      </if>
+      <if test="marginNoteHtmlPath != null">
+        MARGIN_NOTE_HTML_PATH = #{marginNoteHtmlPath,jdbcType=VARCHAR},
+      </if>
+      <if test="marginNotePdfPath != null">
+        MARGIN_NOTE_PDF_PATH = #{marginNotePdfPath,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        START_TIME = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        END_TIME = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where MARGIN_NO = #{marginNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jyd.dataobject.PurchaseMarginRecordDO">
+    update PX_PURCHASE_MARGIN_RECORD
+    set EN_ID = #{enId,jdbcType=VARCHAR},
+      ORDER_NO = #{orderNo,jdbcType=VARCHAR},
+      BATCH_ID = #{batchId,jdbcType=VARCHAR},
+      USER_ID = #{userId,jdbcType=VARCHAR},
+      REQUIRE_MANUAL_APPLY_MARGIN = #{requireManualApplyMargin,jdbcType=DECIMAL},
+      REAL_APPLY_MARGIN = #{realApplyMargin,jdbcType=DECIMAL},
+      REAL_APPLY_DATE = #{realApplyDate,jdbcType=TIMESTAMP},
+      DEAL_STATUS = #{dealStatus,jdbcType=DECIMAL},
+      SOURCE = #{source,jdbcType=DECIMAL},
+      MARGIN_NOTE_HTML_PATH = #{marginNoteHtmlPath,jdbcType=VARCHAR},
+      MARGIN_NOTE_PDF_PATH = #{marginNotePdfPath,jdbcType=VARCHAR},
+      START_TIME = #{startTime,jdbcType=TIMESTAMP},
+      END_TIME = #{endTime,jdbcType=TIMESTAMP},
+      REMARK = #{remark,jdbcType=VARCHAR}
+    where MARGIN_NO = #{marginNo,jdbcType=VARCHAR}
+  </update>
+</mapper>
